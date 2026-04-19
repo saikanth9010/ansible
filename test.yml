@@ -1,0 +1,11 @@
+---
+- name: Verify Vault Variables
+  hosts: localhost
+  connection: local
+  vars_files:
+    - secrets.yml
+
+  tasks:                          # <--- This was the missing "List Header"
+    - name: Print variable check
+      ansible.builtin.debug:      # <--- Now this is a valid attribute of a Task
+        msg: "The Proxmox password is {{ vault_proxmox_password }}"
